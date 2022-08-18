@@ -9307,6 +9307,14 @@
     "path-browserify" "^1.0.0"
     "url-parse" "^1.5.9"
 
+"expo-barcode-scanner@^11.4.0":
+  "integrity" "sha512-Q4BreQHY5U1aGF+rfqeGSzcdlayTKnSe/qTIfkXTmXFsL7bu3hMqdh5J/DL00Dfmc7C0IR8EiV75rqRrY4t0nA=="
+  "resolved" "https://registry.npmjs.org/expo-barcode-scanner/-/expo-barcode-scanner-11.4.0.tgz"
+  "version" "11.4.0"
+  dependencies:
+    "@expo/config-plugins" "~5.0.0"
+    "expo-image-loader" "~3.2.0"
+
 "expo-cli@^5.4.11":
   "integrity" "sha512-NNau44nKvKa7LUTPuoQ3flM9VGHGaMuVNkf/e73l1tc69L72Rt8BOIq2khWId0uYT8Dng9cQ0np0LE5qLvwxTQ=="
   "resolved" "https://registry.npmjs.org/expo-cli/-/expo-cli-5.4.12.tgz"

@@ -92,8 +92,7 @@ export default function Profile({navigation}){
     }
 
     return (
-    <SafeAreaView style={{flex:1,backgroundColor: 'white'}}>
-        
+      <SafeAreaView style={{flex:1,backgroundColor: 'white'}}>
             <View style={styles.header}></View>
             
             <TouchableOpacity onPress={showImagePicker}>
@@ -123,6 +122,7 @@ export default function Profile({navigation}){
                 onChangeText={fn =>setFirstname(fn)}
                 theme={{ colors: { primary: 'orange', placeholder: 'orange', underlineColor:'transparent', background:'white'}}}
             />
+
             <TextInput
                 style={{marginTop:20, width:'90%', alignSelf:'center'}}
                 mode="outlined"
@@ -147,14 +147,6 @@ export default function Profile({navigation}){
                 color="orange" 
                 onPress={handleSave}>
                 Save Changes
-            </Button>
-
-            <Button style={{width:'50%', alignSelf:'center', marginTop:20}} 
-                icon={require('../../assets/save-icon.png')} 
-                mode="contained"
-                color="orange" 
-                onPress={showImagePicker}>
-                Select an image
             </Button>
       </SafeAreaView>
     );

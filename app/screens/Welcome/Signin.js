@@ -29,8 +29,9 @@ const Signin =({navigation}) => {
         })
         .catch(error => alert(error.message))
 
-        navigation.navigate('OnBording')
+        //navigation.navigate('OnBording')
         //navigation.navigate('Profile')
+        navigation.navigate('BarCodeScanPage')
    }
 
 

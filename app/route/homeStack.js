@@ -27,6 +27,9 @@ import ReservationDetails from '../screens/Customer/ReservationDetails';
 import Confirm_res from '../screens/Customer/confirm_res';
 import Dashboard from '../screens/Manager/dash/dashboard';
 
+import Scanner from '../screens/Manager/BarCodeScanPage';
+import TakeOrder from '../screens/Manager/OrderTakenPage';
+
 import Sales from '../screens/Manager/dash/sales';
 import OrderSubmit from '../screens/Customer/OrderSubmit';
 
@@ -116,20 +119,22 @@ const AuthNavigator = ()=>(
     <Stack.Navigator>
 
 <Stack.Screen name='Signin' component={Signin} options={{headerShown: false}} />
-          <Stack.Screen name='OrderSubmit' component={OrderSubmit} options={{headerShown: false}} />
-         <Stack.Screen name='Man_Dash' component={Dashboard} options={{headerShown: false}} />
-         <Stack.Screen name='Sales' component={Sales} options={{headerShown: false}} />
-         
-         
-         <Stack.Screen name='Conf_res' component={Confirm_res} options={{headerShown: false}} />
-         <Stack.Screen name='Menu' component={Menucard} options={{headerShown: false}} />
-         <Stack.Screen name='ReservationHome' component={ReservationHome} options={{headerShown: false}} />
-         <Stack.Screen name='ReservationDetails' component={ReservationDetails} options={{headerShown: false}} />
-         
-         
-         <Stack.Screen name='Manager_home' component={Manager_home} options={{headerShown: false}} />
-         <Stack.Screen name='Manger_menu'  component={Tabnavigator} options={{headerShown: false}}/>
+        <Stack.Screen name='OrderSubmit' component={OrderSubmit} options={{headerShown: false}} />
+        <Stack.Screen name='Man_Dash' component={Dashboard} options={{headerShown: false}} />
+        <Stack.Screen name='Sales' component={Sales} options={{headerShown: false}} />
         
+        
+        <Stack.Screen name='Conf_res' component={Confirm_res} options={{headerShown: false}} />
+        <Stack.Screen name='Menu' component={Menucard} options={{headerShown: false}} />
+        <Stack.Screen name='ReservationHome' component={ReservationHome} options={{headerShown: false}} />
+        <Stack.Screen name='ReservationDetails' component={ReservationDetails} options={{headerShown: false}} />
+        
+        
+        <Stack.Screen name='Manager_home' component={Manager_home} options={{headerShown: false}} />
+        <Stack.Screen name='Manger_menu'  component={Tabnavigator} options={{headerShown: false}}/>
+        <Stack.Screen name='BarCodeScanPage'  component={Scanner} options={{headerShown: false}}/>
+        <Stack.Screen name='OrderTakenPage'  component={TakeOrder} options={{headerShown: false}}/>
+
         <Stack.Screen name='OnBording' component={OnBording} options={{headerShown: false}} />
         <Stack.Screen name='Otp' component={Otp} options={{headerShown: false}} />
         <Stack.Screen name='Customer_main' component={BottomNavigator} options={{headerShown: false}} />
