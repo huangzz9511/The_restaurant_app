@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import {View, SafeAreaView, StyleSheet, Image, Text, Alert, TouchableOpacity} from 'react-native';
 import {db} from '../../database/firebase'
-import firebase from 'firebase/compat';
 import { TextInput, Button} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import { getAuth } from "firebase/auth";

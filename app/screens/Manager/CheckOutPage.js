@@ -1,41 +1,21 @@
 import React, { useState, useEffect} from 'react';
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
 import { Button} from 'react-native-paper';
-import {db} from '../../database/firebase'
 
-export default function TakeOrder({navigation, route}){
-    
-
-    const handleConfirm =() =>{
-      const order = route.params
-      console.log(order)
-      db
-      .collection('Reservation')
-      .doc(order.Email.trim())
-      .delete()
-      
-      navigation.navigate('CheckOutPage')
-    }
+export default function CheckOut({navigation}){
 
 
     return (
       <SafeAreaView style={{flex:1,backgroundColor: 'orange'}}>
           
           <View style={styles.container}>
-            <Text style={styles.title}> Order Taken </Text>
+            <Text style={styles.title}> Check Out </Text>
 
             <Button style={styles.button} 
                 mode="contained"
                 color="white" 
-                onPress={() => navigation.navigate('BarCodeScanPage')}>
-                <Text style={{fontSize: 18}}>Tap to Scan Again</Text>
-            </Button>
-            
-            <Button style={styles.button} 
-                mode="contained"
-                color="white" 
-                onPress={handleConfirm}>
-                <Text style={{fontSize: 18}}>Confirm</Text>
+                onPress={() => navigation.navigate('Signin')}>
+                <Text style={{fontSize: 18}}>Done</Text>
             </Button>
           </View>
 

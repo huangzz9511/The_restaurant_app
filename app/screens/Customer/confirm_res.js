@@ -82,10 +82,8 @@ console.log(food)
     let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
     return(
       <QRCode 
-           value={JSON.stringify(name)+" "+ JSON.stringify(table)+" " +JSON.stringify(food.food)}
-            
-            
-           
+           value={JSON.stringify([name, table, food.food])}
+          
            logoSize={30}
            logoBackgroundColor='transparent'
            />
