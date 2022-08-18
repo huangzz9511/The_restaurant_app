@@ -14,7 +14,7 @@ export default function CheckOut({navigation}){
             <Button style={styles.button} 
                 mode="contained"
                 color="white" 
-                onPress={() => navigation.navigate('Signin')}>
+                onPress={() => navigation.navigate('Manager_home')}>
                 <Text style={{fontSize: 18}}>Done</Text>
             </Button>
           </View>

@@ -1,24 +1,39 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { Text, View, SafeAreaView,StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, FlatList, Dimensions, TouchableHighlight } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
+import { getAuth } from "firebase/auth";
 import {foods,menu, categories} from '../Menu/food';
-
+import {db} from '../../database/firebase'
 
 const {width} = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
 
 function Menucard({navigation}) {
-
+  const auth = getAuth();
+  const user = auth.currentUser;
   const [selectedCategoryIndex, setselectedCategoryIndex] = React.useState(0);
   const [selectedMenutype, setSelectedMenuType] = React.useState(0);
   const [Search, setSearch] = React.useState(true)
   const [Filter, setFilter] = React.useState(foods)
+  const [imgUrl, setImgUrl] = useState()
+  const [firstname, setFirstname] = useState('')
   //React.useEffect(()=>{
    // handleChangeCategory(selectedCategoryIndex, selectedMenutype)
   //}, [])
 
-
+useEffect(()=>{
+  db
+  .collection('UserData').doc(user.email).get().then(DocumentSnapshot => {
+    if (DocumentSnapshot.exists){
+      const udata = DocumentSnapshot.data()
+      
+      
+      setFirstname(udata.firstName)
+      
+      setImgUrl(udata.imageUrl)
+    }
+  })
+},[])
   // helper function for search
   const onSearch = (text) =>{
     const tempList = foods.filter(item=>{
@@ -163,7 +178,7 @@ function Menucard({navigation}) {
             <Text style={{flexDirection: 'row'}} >
               <Text style={{fontSize: 28}}>Hello, </Text>
               <Text style={{fontSize: 28, fontWeight: 'bold', marginLeft: 10}}>
-                Jenish 
+                {firstname} 
                 </Text>
 
             </Text>
@@ -181,8 +196,7 @@ function Menucard({navigation}) {
         </View>
 
         <Image 
-        source={require('../../assets/profile.png'
-        )} 
+        source={{uri: imgUrl}} 
         style={{height:50, width: 50, borderRadius: 25}}
 
         />
@@ -192,6 +206,7 @@ function Menucard({navigation}) {
         marginTop:40,
         flexDirection: 'row',
         paddingHorizontal: 20,
+        paddingBottom: 20
       }}>
 
 
@@ -217,7 +232,7 @@ function Menucard({navigation}) {
 
       <View>
 
-    <ListCategories />
+    
 
       </View>
       { Search &&

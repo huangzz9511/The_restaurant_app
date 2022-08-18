@@ -1,5 +1,5 @@
 import React,{useState, setValue} from 'react';
-import {View, Switch, SafeAreaView, StyleSheet,Button, Image, ImageBackground,Text, TextInput,TouchableOpacity} from 'react-native';
+import {View, Switch, SafeAreaView, StyleSheet, Image, ImageBackground,Text, TextInput,TouchableOpacity} from 'react-native';
 import {PrimaryButton} from '../../components/Button'
 
 export default function Manager_home({navigation}) {
@@ -29,14 +29,18 @@ export default function Manager_home({navigation}) {
       <SafeAreaView style={styles.background}>
         <Image style={styles.logo} source={require('../../assets/table-management.png')} />
         <Text style={styles.check_in}> Checked-In </Text>
-          <TouchableOpacity
-              onPress={buttonClickedHandler}
-              style={styles.roundButton1}>
+        <TouchableOpacity
+            onPress={buttonClickedHandler}
+            style={styles.roundButton1}>
 
-              <Text style={styles.number}>08</Text>  
-          </TouchableOpacity>
-          
-          <View style={styles.switchBotton}>
+            <Text style={styles.number}>08</Text>  
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{top:160}} onPress={() =>{navigation.navigate('BarCodeScanPage')}}>
+          <Image source={require("../../assets/qr-code-scan-icon.png")} style={styles.scanIcon}/>
+        </TouchableOpacity>
+
+        <View style={styles.switchContainer}>
           <Text style={styles.onoff}>Slide to Turn On/Off Pre-check-In</Text>  
           <Switch
               trackColor={{ false: "#767577", true: "#767577" }}
@@ -47,29 +51,25 @@ export default function Manager_home({navigation}) {
               inActiveText={'Off'}
               value={isEnabled}
             />
-          </View>
+        </View>
 
-          <View style={styles.container1}>
-              <View style={styles.parent1}>
-                  <PrimaryButton title='Menu'
-                  btnContainer={{
-                    height:40,
-                    width:130,
-                    right:40,
-                    borderRadius:20
-                  }} onPress={()=>navigation.navigate('Manger_menu')}
-                  />
-                  <PrimaryButton title='Report'
-                  btnContainer={{
-                    height:40,
-                    width:130,
-                    left:40,
-                    borderRadius:20
-                  }}/>
-                  
-            </View>
-              
-          </View>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton title='Menu'
+            btnContainer={{
+              height:40,
+              width:130,
+              right:40,
+              borderRadius:20
+            }} onPress={()=>navigation.navigate('Manger_menu')}
+            />
+          <PrimaryButton title='Report'
+            btnContainer={{
+              height:40,
+              width:130,
+              left:40,
+              borderRadius:20
+          }}/>
+        </View>
 
       </SafeAreaView>
   
@@ -85,13 +85,12 @@ export default function Manager_home({navigation}) {
   logo:{
     height: 220,
     width: 400,        
-    top: 80
+    top: 70
   },
 
   check_in:{
     color: 'orange',
-    
-    top: 150,
+    top: 100,
     fontSize: 32,
     alignContent: 'center',
     alignItems: 'center',
@@ -102,7 +101,7 @@ export default function Manager_home({navigation}) {
   roundButton1:{
       width: 150,
       height: 150,
-      top: 180,
+      top: 130,
       justifyContent: 'center',
       alignItems: 'center',
       padding: 10,
@@ -111,32 +110,26 @@ export default function Manager_home({navigation}) {
   },
 
   number:{
-    
-    
     color: 'black',
     textAlign: 'center',
     fontSize: 34
   },
 
-  switchBotton: {
-      flex: 2,
+  switchContainer: {
       alignItems: "center",
       justifyContent: "center",
-      top:150
-      
+      top:190,
   },
 
   onoff:{
-    margin: 1,
     width: 300,
-    height: 60,
+    height: 30,
     color: 'grey',
     textAlign: 'center',
     fontSize: 12
   },
   
-  switch:{  
-      margin: 1,
+  switch:{
       width: 300,
       height: 60,
       color: 'white',
@@ -158,14 +151,19 @@ export default function Manager_home({navigation}) {
       fontWeight:'bold'
   },
 
-  container1: {
-      flex: 1,
+  buttonContainer: {
+    top: 220,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   
   parent1: {
       flex: 1,
-      flexDirection: "row",
-      justifyContent: "space-evenly",
-      top: 80
+
+      top: 60
     },
+  scanIcon:{
+    height:40,
+    width: 40,
+  },
 });

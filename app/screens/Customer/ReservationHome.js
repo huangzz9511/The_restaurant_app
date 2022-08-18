@@ -1,9 +1,9 @@
 import { Text, View, SafeAreaView, StyleSheet,Dimensions,Image,FlatList,TouchableHighlight } from 'react-native'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Table from '../Menu/Table';
-
-
+import {db} from '../../database/firebase'
+import { getAuth } from "firebase/auth";
 const {width} = Dimensions.get('screen');
 const cardWidth = width - 20;
 
@@ -11,9 +11,23 @@ const cardWidth = width - 20;
 
 
 function ReservationHome({navigation}) {
-
-
-
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const [imgUrl, setImgUrl] = useState()
+  const [firstname, setFirstname] = useState('')
+  useEffect(()=>{
+    db
+    .collection('UserData').doc(user.email).get().then(DocumentSnapshot => {
+      if (DocumentSnapshot.exists){
+        const udata = DocumentSnapshot.data()
+        
+        
+        setFirstname(udata.firstName)
+        
+        setImgUrl(udata.imageUrl)
+      }
+    })
+  },[])
     const Card = ({Table}) => {
         return(
           <TouchableHighlight 
@@ -65,7 +79,7 @@ function ReservationHome({navigation}) {
               <Text style={{flexDirection: 'row'}} >
                 <Text style={{fontSize: 28}}>Hello, </Text>
                 <Text style={{fontSize: 28, fontWeight: 'bold', marginLeft: 10}}>
-                  Jenish 
+                  {firstname} 
                   </Text>
   
               </Text>
@@ -83,8 +97,7 @@ function ReservationHome({navigation}) {
           </View>
   
           <Image 
-          source={require('../../assets/profile.png'
-          )} 
+          source={{uri: imgUrl}} 
           style={{height:50, width: 50, borderRadius: 25}}
   
           />
@@ -198,9 +211,6 @@ const style=StyleSheet.create({
 
    }
   });
-
-
-
 
 
 export default ReservationHome ;

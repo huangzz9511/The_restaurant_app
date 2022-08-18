@@ -20,15 +20,15 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app;
+let otherapp;
 if(firebase.apps.length === 0){
-    app = firebase.initializeApp(firebaseConfig);
+    otherapp = firebase.initializeApp(firebaseConfig);
 }
 else {
-    app = firebase.app()
+    otherapp = firebase.app()
 }
-const database = getDatabase(app)
-const Manager_auth = getAuth(app)
-const Manager_db = app.firestore()
+const database = getDatabase(otherapp)
+const Manager_auth = firebase.auth(otherapp)
+const Manager_db = otherapp.firestore()
 
 export{ Manager_auth,database,Manager_db };
