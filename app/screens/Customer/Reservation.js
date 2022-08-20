@@ -16,7 +16,7 @@ function Reservation({navigation}){
 
             db
             .collection(user.email)
-            .doc('Reservastion')
+            .doc('Reservation')
             .set({
               'number of people' : count,
               Time: selectedCategoryIndex

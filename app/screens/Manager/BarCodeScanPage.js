@@ -6,7 +6,7 @@ export default function Scanner({navigation}){
 
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
-    const [order, setOrder] = useState(null);
+    const [email, setEmail] = useState('');
 
     useEffect(() => {
       const getBarCodeScannerPermissions = async () => {
@@ -24,9 +24,10 @@ export default function Scanner({navigation}){
     var order_info;
     const handleBarCodeScanned = ({ type, data }) => {
       setScanned(true);
-      setOrder(JSON.parse(data)[0]) //data is a stringfied array of order info
+      setEmail(JSON.parse(data)[0].Email.trim()); //data is a stringfied array of order info
       
-      Alert.alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+      //Alert.alert(`Bar code scanned succesfully!`);
+      //Alert.alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     };
 
     return (
@@ -38,7 +39,7 @@ export default function Scanner({navigation}){
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={{height:300, width: 300}}
             />
-            {scanned && navigation.navigate('OrderTakenPage', order) }
+            {scanned && navigation.navigate('TakeOrder', email) }
           </View>
 
       </SafeAreaView>

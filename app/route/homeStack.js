@@ -31,7 +31,10 @@ import CartScreen from '../screens/Customer/CartScreen';
 import Scanner from '../screens/Manager/BarCodeScanPage';
 import TakeOrder from '../screens/Manager/OrderTakenPage';
 import CheckOut from '../screens/Manager/CheckOutPage';
+import AddFood from '../screens/Manager/AddFoodToOrder';
+import Waitinglist from '../screens/Manager/Waiting_list';
 
+import Orderpage from '../screens/Manager/dash/Orderpage';
 import Sales from '../screens/Manager/dash/sales';
 import OrderSubmit from '../screens/Customer/OrderSubmit';
 
@@ -136,7 +139,8 @@ const AuthNavigator = () => (
     <Stack.Screen name='Man_Dash' component={Dashboard} options={{ headerShown: false }} />
     <Stack.Screen name='Sales' component={Sales} options={{ headerShown: false }} />
     <Stack.Screen name='CartScreen' component={CartScreen} options={{ headerShown: false }} />
-
+    <Stack.Screen name='Orderpage' component={Orderpage} options={{headerShown: false}} />
+    
     <Stack.Screen name='Conf_res' component={Confirm_res} options={{ headerShown: false }} />
     <Stack.Screen name='Menu' component={Menucard} options={{ headerShown: false }} />
     <Stack.Screen name='ReservationHome' component={ReservationHome} options={{ headerShown: false }} />
@@ -148,10 +152,12 @@ const AuthNavigator = () => (
     <Stack.Screen name='Waitinglist'  component={Waitinglist} options={{headerShown: false}}/>
     <Stack.Screen name='Menu_edit'  component={Menu_edit} options={{headerShown: false}}/>
     <Stack.Screen name='Menu_input'  component={Menu_input} options={{headerShown: false}}/>*/}
+    <Stack.Screen name='Waitinglist'  component={Waitinglist} options={{headerShown: false}}/>
 
-    <Stack.Screen name='BarCodeScanPage' component={Scanner} options={{ headerShown: false }} />
-    <Stack.Screen name='OrderTakenPage' component={TakeOrder} options={{ headerShown: false }} />
-    <Stack.Screen name='CheckOutPage' component={CheckOut} options={{ headerShown: false }} />
+    <Stack.Screen name='Scanner' component={Scanner} options={{ headerShown: false }} />
+    <Stack.Screen name='TakeOrder' component={TakeOrder} options={{ headerShown: false }} />
+    <Stack.Screen name='CheckOut' component={CheckOut} options={{ headerShown: false }} />
+    <Stack.Screen name='AddFood' component={AddFood} options={{ headerShown: false }} />
 
     <Stack.Screen name='OnBording' component={OnBording} options={{ headerShown: false }} />
     <Stack.Screen name='Otp' component={Otp} options={{ headerShown: false }} />

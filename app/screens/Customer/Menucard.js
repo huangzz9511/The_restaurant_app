@@ -11,8 +11,6 @@ const cardWidth = width / 2 - 20;
 function Menucard({navigation}) {
   const auth = getAuth();
   const user = auth.currentUser;
-  const [selectedCategoryIndex, setselectedCategoryIndex] = React.useState(0);
-  const [selectedMenutype, setSelectedMenuType] = React.useState(0);
   const [Search, setSearch] = React.useState(true)
   const [Filter, setFilter] = React.useState(foods)
   const [imgUrl, setImgUrl] = useState()
@@ -44,72 +42,6 @@ useEffect(()=>{
     setFilter(tempList)
     
   }
-
-  // Helper function for catagories
-
-  function mapfood (){
-    setSelectedMenuType=foods.categories.filter(a => a.id.includes(id))
-
-  }
-  
-  const ListCategories =()=>{
-
-      
-
-      return(
-
-        <ScrollView
-      
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={style.catagoriesListContainer}
-        
-        >
-
-          {categories.map((category,index)=>(
-
-            <TouchableOpacity 
-            key={index}
-            activeOpacity={0.8}
-            onPress={()=> {setselectedCategoryIndex(index)} }
-            >
-
-              <View style={{
-                backgroundColor:selectedCategoryIndex == index 
-                ? 'orange' 
-                : '#FEDAC5',
-                ...style.categorryBtn
-                }}>
-
-                  <View 
-                  style={style.categorryBtnImgCon}
-                  >
-                    <Image 
-                    source={category.image} 
-                    style={{height:35, width:35, resizeMode: 'cover'
-                    }} />
-
-                  </View>
-
-                  <Text 
-                    style={{fontSize:15,
-                       fontWeight: 'bold',
-                        marginLeft: 10,
-                         color: selectedCategoryIndex == index
-                          ? 'white' 
-                          : 'orange'
-                           }}>
-                    {category.name}
-                  </Text>
-
-                </View>
-
-            </TouchableOpacity>
-          ))}
-
-        </ScrollView>
-      )
-    }
 
     const Card = ({food}) => {
       return(
@@ -154,20 +86,6 @@ useEffect(()=>{
       );
     }
 
-
-    //function handleChangeCategory(categoryId, menuTypeId){
-
-      //find the menu based on the menuTypeId
-      //let selectedMenu = menu.find(a => a.id == menuTypeId)
-
-
-      //set the menu based on categoryId
-      //setMenuList(selectedMenu?.list.filter(a=> a.categories.includs(categoryId)))
-
-    //}
-
-
-    
     return (
 
       <SafeAreaView style={{flex:1,backgroundColor: 'white'}}>

@@ -172,7 +172,7 @@ console.log(food)
                         width:300,
                         borderRadius:60,
                         alignSelf:'center'
-                    }} />
+                    }}onPress={()=> navigation.navigate('Customer_main')} />
                 
                 
             </View>

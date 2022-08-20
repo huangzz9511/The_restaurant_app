@@ -1,10 +1,29 @@
-import React,{useState, setValue} from 'react';
+import React,{useState,useEffect, setValue} from 'react';
 import {View, Switch, SafeAreaView, StyleSheet, Image, ImageBackground,Text, TextInput,TouchableOpacity} from 'react-native';
 import {PrimaryButton} from '../../components/Button'
+import {db} from '../../database/firebase'
+import { getAuth } from "firebase/auth";
+
 
 export default function Manager_home({navigation}) {
+  const auth = getAuth();
+const user = auth.currentUser;
+const [data, setdata]=useState()
+  useEffect(()=>{
+    
+    db.collection('Reservation').get().then(Doc=>{
+      
+       const a=Doc.size
+      
+      setdata(a)
+    })
+
+  },[]);
+
+
   const buttonClickedHandler = () => {
       console.log('You have press the switch!');
+      navigation.navigate('Waitinglist')
   };
 
   const [value, setValue] = useState("ON");
@@ -22,6 +41,10 @@ export default function Manager_home({navigation}) {
       );
   };
 
+  
+
+
+
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -33,10 +56,10 @@ export default function Manager_home({navigation}) {
             onPress={buttonClickedHandler}
             style={styles.roundButton1}>
 
-            <Text style={styles.number}>08</Text>  
+            <Text style={styles.number}>{data}/12</Text>  
         </TouchableOpacity>
 
-        <TouchableOpacity style={{top:160}} onPress={() =>{navigation.navigate('BarCodeScanPage')}}>
+        <TouchableOpacity style={{top:160}} onPress={() =>{navigation.navigate('Scanner')}}>
           <Image source={require("../../assets/qr-code-scan-icon.png")} style={styles.scanIcon}/>
         </TouchableOpacity>
 
@@ -60,7 +83,7 @@ export default function Manager_home({navigation}) {
               width:130,
               right:40,
               borderRadius:20
-            }} onPress={()=>navigation.navigate('Manger_menu')}
+            }} onPress={()=>navigation.navigate('Manager_Menu')}
             />
           <PrimaryButton title='Report'
             btnContainer={{
